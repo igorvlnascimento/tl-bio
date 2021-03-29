@@ -493,13 +493,12 @@ class Bert_finetuning_CNN_Entity(nn.Module):
         )
 
     def forward(self, x, xr):
-        activity_layers, _ = self.bert_model(x)
+        activity_layers, _ = self.bert_model(x, return_dict=False)
 
         a1, e1, a2, e2, a3 = [], [], [], [], []
 
         for i in range(xr.size()[0]):
             e1start, e1end, e2start, e2end = xr[i, 0], xr[i, 1], xr[i, 2], xr[i, 3]
-            print("e1:",e1start, e1end, e1, activity_layers)
 
             a1.append(activity_layers[i, :e1start + 1, :])
 
