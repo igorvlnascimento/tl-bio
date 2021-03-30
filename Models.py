@@ -3,6 +3,7 @@ from opt_einsum.backends import torch
 import torch.nn.functional as F
 import torch
 import Bert
+from Parameters import global_param
 
 Switch = False
 
@@ -493,7 +494,13 @@ class Bert_finetuning_CNN_Entity(nn.Module):
         )
 
     def forward(self, x, xr):
-        activity_layers, _ = self.bert_model(x, return_dict=False)
+        corpus=global_param.corpus_param['corpus']
+
+        activity_layers, _ = self.bert_model(x)
+        if corpus == "semeval":
+            activity_layers = activity_layers[0]
+        else:
+            activity_layers, _ = self.bert_model(x, return_dict=False)
 
         a1, e1, a2, e2, a3 = [], [], [], [], []
 
