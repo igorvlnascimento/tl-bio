@@ -33,6 +33,7 @@ X_test,Y_test=[],[]
 
 if(corpus=='semeval'):
     path_train="data/SemEval2010_task8_all_data/SemEval2010_task8_training/TRAIN_FILE.TXT"
+    path_valid="data/SemEval2010_task8_all_data/SemEval2010_task8_training/DEV_FILE.TXT"
     path_test="data/SemEval2010_task8_all_data/SemEval2010_task8_testing_keys/TEST_FILE_FULL.TXT"
 if(corpus=='snpphena'):
     path_train="data/SNPPhenA/SNPPhenA_BRAT/Train/"
